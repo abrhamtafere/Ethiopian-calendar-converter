@@ -1,0 +1,40 @@
+{
+  "name": "ethiopian-calendar-converter",
+  "version": "1.1.0",
+  "description": "High-performance Ethiopian Calendar date converter with Amharic and English localization",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
+    "test": "npm run build && node test.js"
+  },
+  "keywords": [
+    "ethiopian",
+    "calendar",
+    "gregorian",
+    "date-converter",
+    "amharic",
+    "geez",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ethiopian-calendar"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ethiopian-calendar/issues"
+  },
+  "homepage": "https://github.com/yourusername/ethiopian-calendar#readme",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
+  }
+}
