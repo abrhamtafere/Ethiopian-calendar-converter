@@ -4,6 +4,13 @@
   "description": "High-performance Ethiopian Calendar date converter with Amharic and English localization",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    }
+  },
   "files": [
     "dist",
     "src"

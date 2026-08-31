@@ -10,6 +10,7 @@ Convert Gregorian dates to the Ethiopian (Ge'ez) Calendar and vice-versa with du
 ## Features
 
 - ⚡ **High Performance** – Pure $O(1)$ mathematical conversion (~1 µs per operation).
+- 🌐 **Universal Compatibility** – Runs everywhere JS/TS executes (Node.js, Browsers, React, Vue, Next.js, React Native, Bun, Deno & Edge Functions).
 - 🔄 **Bidirectional** – Convert Gregorian $\rightarrow$ Ethiopian and Ethiopian $\rightarrow$ Gregorian.
 - 📦 **Zero Dependencies** – Lightweight and tree-shakeable.
 - 📘 **First-Class TypeScript** – Written in TypeScript with full type definitions included.
@@ -27,7 +28,7 @@ pnpm add ethiopian-calendar-converter
 
 ## Quick Start
 
-### TypeScript / ESM
+### Basic Usage (TypeScript / ESM)
 
 ```typescript
 import { 
@@ -37,28 +38,50 @@ import {
   getCurrentEthiopian 
 } from 'ethiopian-calendar-converter';
 
-// 1. Convert Gregorian to Ethiopian
+// Convert Gregorian to Ethiopian
 const eth = gregorianToEth('2026-08-31');
 // { year: 2018, month: 12, day: 25, monthNameAm: 'ነሐሴ', monthNameEn: 'Nehase' }
 
-// 2. Format as localized date string
+// Format as localized date string
 console.log(toEthiopianDate('2026-08-31', 'am')); // "25 ነሐሴ 2018"
 console.log(toEthiopianDate('2026-08-31', 'en')); // "25 Nehase 2018"
 
-// 3. Convert Ethiopian to Gregorian (Inverse)
+// Convert Ethiopian to Gregorian (Inverse)
 const greg = ethiopianToGregorian(2018, 12, 25);
 // { year: 2026, month: 8, day: 31 }
-
-// 4. Current Ethiopian Date
-const today = getCurrentEthiopian();
 ```
 
-### CommonJS
+### Backend Example (Express / Node.js API)
 
-```javascript
-const { gregorianToEth, toEthiopianDate } = require('ethiopian-calendar-converter');
+```typescript
+import express from 'express';
+import { gregorianToEth, toEthiopianDate } from 'ethiopian-calendar-converter';
 
-console.log(toEthiopianDate(new Date()));
+const app = express();
+
+app.get('/api/date-convert', (req, res) => {
+  const date = (req.query.date as string) || new Date();
+  res.json({
+    ethiopian: gregorianToEth(date),
+    formatted: toEthiopianDate(date, 'am')
+  });
+});
+```
+
+### Frontend Example (React / Next.js Component)
+
+```tsx
+import React from 'react';
+import { toEthiopianDate } from 'ethiopian-calendar-converter';
+
+export function DateBanner({ gregorianDate }: { gregorianDate: string }) {
+  return (
+    <div>
+      <h3>Ethiopian Date:</h3>
+      <p>{toEthiopianDate(gregorianDate, 'am')}</p>
+    </div>
+  );
+}
 ```
 
 ## API Reference
